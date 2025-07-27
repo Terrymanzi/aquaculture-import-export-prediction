@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 from typing import Dict, Union
 import uvicorn
+import os
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -25,11 +26,12 @@ app.add_middleware(
 
 # Load model and components at startup
 try:
-    model = joblib.load('best_model.pkl')
-    scaler = joblib.load('scaler.pkl')
-    le_country = joblib.load('country_encoder.pkl')
-    le_commodity = joblib.load('commodity_encoder.pkl')
-    model_metadata = joblib.load('model_metadata.pkl')
+    BASE_DIR = os.path.dirname(__file__)  # This will point to the 'API' folder
+    model = joblib.load(os.path.join(BASE_DIR, 'best_model.pkl'))
+    scaler = joblib.load(os.path.join(BASE_DIR, 'scaler.pkl'))
+    le_country = joblib.load(os.path.join(BASE_DIR, 'country_encoder.pkl'))
+    le_commodity = joblib.load(os.path.join(BASE_DIR, 'commodity_encoder.pkl'))
+    model_metadata = joblib.load(os.path.join(BASE_DIR, 'model_metadata.pkl'))
     print("Models and components loaded successfully!")
 except Exception as e:
     print(f"Error loading models: {e}")
