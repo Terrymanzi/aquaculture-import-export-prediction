@@ -19,12 +19,14 @@ class _PredictionPageState extends State<PredictionPage>
   final _yearController = TextEditingController();
   late AnimationController _buttonController;
 
+  // render api url
   final String apiUrl =
       'https://aquaculture-import-export-prediction.onrender.com';
   bool _isLoading = false;
   Map<String, dynamic>? _predictionResult;
   String? _errorMessage;
 
+  // list of available countries in the dataset
   final List<String> _countries = [
     'Algeria',
     'Angola',
@@ -33,7 +35,7 @@ class _PredictionPageState extends State<PredictionPage>
     'Burkina Faso',
     'Burundi',
     'Cameroon',
-    'Cape Verde',
+    // 'Cape Verde',
     'Central African Republic',
     'Chad',
     'Comoros',
@@ -48,7 +50,7 @@ class _PredictionPageState extends State<PredictionPage>
     'Ghana',
     'Guinea',
     'Guinea-Bissau',
-    'Ivory Coast',
+    // 'Ivory Coast',
     'Kenya',
     'Lesotho',
     'Liberia',
@@ -71,7 +73,7 @@ class _PredictionPageState extends State<PredictionPage>
     'South Africa',
     'Sudan',
     'Swaziland',
-    'Tanzania',
+    // 'Tanzania',
     'Togo',
     'Tunisia',
     'Uganda',
@@ -107,6 +109,7 @@ class _PredictionPageState extends State<PredictionPage>
       _predictionResult = null;
     });
 
+    //sending the request to the "/preidct" end-point
     try {
       final response = await http.post(
         Uri.parse('$apiUrl/predict'),
@@ -319,7 +322,7 @@ class _PredictionPageState extends State<PredictionPage>
           focusNode: focusNode,
           decoration: InputDecoration(
             labelText: 'Country',
-            hintText: 'e.g., Egypt, Nigeria',
+            hintText: 'e.g., Rwanda',
             prefixIcon:
                 const Icon(Icons.location_on, color: AppTheme.primaryBlue),
             labelStyle: GoogleFonts.poppins(color: AppTheme.grey),

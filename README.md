@@ -1,10 +1,24 @@
 # Aquaculture Trade Prediction System
 
-A machine learning-powered system for predicting aquaculture import and export volumes for African countries.
+A machine learning-powered App for predicting annual aquaculture import and export volumes for African countries.
+
+## Mission
+
+My mission is to empower African fisheries and aquaculture stakeholders with accessible data-driven insights by providing a friendly tool that predicts import and export trade volumes annually.
+My goal is to simplify decision-making through machine learning while promoting transparency and planning in regional aquaculture trade.
+
+## Live Demo
+
+🎥 **YouTube Demo**: [Watch the 5-minute demo](https://www.youtube.com/watch?v=mN-Mf0jgRpU)
+
+🔗 **Public API**: [https://aquaculture-import-export-prediction.onrender.com/docs](https://aquaculture-import-export-prediction.onrender.com/docs)
+
+Test the API using the Swagger UI interface at the link above.
 
 ## Project Overview
 
 This project implements a complete end-to-end solution for predicting aquaculture trade volumes using:
+
 - **Machine Learning**: Linear Regression, Decision Trees, and Random Forest models
 - **API**: FastAPI backend with data validation and CORS support
 - **Mobile App**: Flutter application for user-friendly predictions
@@ -13,7 +27,7 @@ This project implements a complete end-to-end solution for predicting aquacultur
 
 - **Source**: [Global Fisheries & Aquaculture Department](https://www.kaggle.com/datasets/zhengtzer/global-fisheries-aquaculture-department?select=Africa_Quantity.csv)
 - **Focus**: African countries' aquaculture trade data
-- **Commodities**: Fish, Crustaceans, Molluscs, Aquatic plants
+- **Commodities**: Fish, Crustaceans
 - **Time Period**: 2000-2015 (historical data)
 - **Predictions**: 2000-2050
 
@@ -44,8 +58,9 @@ linear_regression_model/
 ## Features
 
 ### Machine Learning Model
+
 - **Data Preprocessing**: Handles missing values, outliers, and data reshaping
-- **Feature Engineering**: 
+- **Feature Engineering**:
   - Years since 2000
   - Country and commodity encoding
   - Trade flow indicators (Import/Export)
@@ -54,6 +69,7 @@ linear_regression_model/
 - **Visualization**: Loss curves, scatter plots, feature importance
 
 ### API Features
+
 - RESTful endpoints for predictions
 - Input validation with Pydantic
 - CORS middleware for cross-origin requests
@@ -62,6 +78,7 @@ linear_regression_model/
 - Comprehensive error handling
 
 ### Flutter App Features
+
 - Multi-page navigation
 - Country autocomplete
 - Year validation (2000-2050)
@@ -96,7 +113,14 @@ python prediction.py
 # Documentation at http://localhost:8000/docs
 ```
 
-### 3. Flutter App Setup
+### 3. Mobile App Setup
+
+**Prerequisites:**
+
+- Install [Flutter SDK](https://flutter.dev/docs/get-started/install)
+- Install Android Studio or Xcode for device emulation
+
+**Steps:**
 
 ```bash
 cd FlutterApp/
@@ -104,12 +128,17 @@ cd FlutterApp/
 # Get dependencies
 flutter pub get
 
-# Update API URL in main.dart
-# Replace 'https://your-api-url.onrender.com' with your deployed API URL
-
-# Run the app
+# Run on Android emulator/device
 flutter run
+
+# Or run on iOS simulator (macOS only)
+flutter run -d ios
+
+# Or run on web browser
+flutter run -d web
 ```
+
+**Note**: The app is pre-configured to use the public API endpoint.
 
 ## API Endpoints
 
@@ -123,7 +152,7 @@ flutter run
 ### Example Request
 
 ```bash
-curl -X POST "https://your-api.onrender.com/predict" \
+curl -X POST "https://aquaculture-import-export-prediction.onrender.com/predict" \
      -H "Content-Type: application/json" \
      -d '{
        "country": "Egypt",
@@ -137,7 +166,7 @@ curl -X POST "https://your-api.onrender.com/predict" \
 {
   "country": "Egypt",
   "year": 2025,
-  "export_volume": 12500.50,
+  "export_volume": 12500.5,
   "import_volume": 8750.25,
   "unit": "tonnes",
   "confidence_level": "medium"
@@ -153,6 +182,7 @@ The system compares multiple models and selects the best performer based on R² 
 - **Random Forest**: Ensemble method for improved accuracy
 
 Key metrics evaluated:
+
 - Mean Squared Error (MSE)
 - Root Mean Squared Error (RMSE)
 - Mean Absolute Error (MAE)
@@ -173,6 +203,7 @@ See `deployment_guide.md` for detailed instructions.
 ### Deploy Flutter App
 
 Options:
+
 - **Android**: Build APK with `flutter build apk`
 - **iOS**: Build IPA with `flutter build ios`
 - **Web**: Build with `flutter build web`
@@ -180,11 +211,13 @@ Options:
 ## Future Improvements
 
 1. **Data Enhancement**:
+
    - Include more recent data (2016-2024)
    - Add economic indicators
    - Include climate data
 
 2. **Model Improvements**:
+
    - Time series models (ARIMA, LSTM)
    - Ensemble methods
    - Hyperparameter optimization
@@ -198,4 +231,7 @@ Options:
 ## Contributing
 
 1. Fork the repository
-2. Create feature branch (`git checkout -b feature/A
+2. Create feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
